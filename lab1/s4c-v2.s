@@ -1,28 +1,24 @@
 .include "macros.s"
-.include "crt0.s" 
+.include "crt0.s"
 .data
-    v: .byte 'F', 'i'
-.text 
-main: 
-;R1 = n
-;R2 = v[0]
-;R3 = &v[n]
-
-$MOVEI R1, v
-LD R1, 0(R1)
-
+    v: .byte 'A', 'q', 'u', 'e', 's', 't', ' ', 'p', 'r', 'o', 'g', 'r', 'a', 'm', 'a', ' ', 'f', 'u', 'n', 'c', 'i', 'o', 'n', 'a'
+.text
+main:
+;R1 = 0
+$MOVEI R1, 0
+;R2 = v
 $MOVEI R2, v
+;R3 = v[i]
 
 print:
-    ADD R3, R2, R1
-
     MOVI R0, 0
     OUT Rcon_imp, R0
     $MOVEI R4, 0x8000
 
 for:
-    ;&v[i] < &v[n]
-    $CMPLTU R5, R2, R3
+    ;v[i] == &v[n]
+    LDB R3, 0(R2)
+    $CMPLTU R5, R1, R3
     BZ R5, fi_for
 
 do:
@@ -34,7 +30,7 @@ do:
     LDB R5, 0(R2)   ;R5 <- v[i]
     OUT Rdat_imp, R5
     OUT Rcon_imp, R4
-    ADDI R2, R2, 1
+    ADDI R2, R2, 1    ;seguent lletra
     BNZ R2, for
 fi_for:
 do_2:
@@ -43,5 +39,3 @@ do_2:
     JMP R6
 
 
-
-halt

@@ -1,5 +1,5 @@
 # Nombre del archivo ensamblador sin la extensión
-TARGET = s4d-v2
+TARGET = s4c
 
 # Nombre del archivo objeto intermedio
 OBJ = s0.o
