@@ -1,7 +1,7 @@
 .include "macros.s"
 .include "crt0.s" 
 .data
-	w: .word 0x4444
+	w: .word 0xFFF9
 ;Exercici 4.7 modificacions:
 .text 
 main: 
@@ -102,8 +102,6 @@ HALT
 
 
 	
-
-
 ;funcio mostra:
 ;PRE: R1 = w = 0x4444
 mostra:
